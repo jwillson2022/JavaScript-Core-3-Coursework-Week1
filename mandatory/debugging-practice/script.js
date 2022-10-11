@@ -37,7 +37,7 @@ function submit() {
     alert("Please fill all fields!");
     return false;
   } else {
-    let book = new Book(title.value, title.value, pages.value, check.checked);
+    let book = new Book(title.value, author.value, pages.value, check.checked); // author.value not title
     myLibrary.push(book); // library
     render();
   }
@@ -56,30 +56,31 @@ function render() {
   //delete old table
   for (let n = rowsNumber - 1; n > 0; n--) {
     table.deleteRow(n);
+    
   }
   //insert updated row and cells
   let length = myLibrary.length;
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++ ) {
     let row = table.insertRow(1);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3);
     let cell5 = row.insertCell(4);
-    cell1.innerHTML = myLibrary[i].title;
-    cell2.innerHTML = myLibrary[i].author;
-    cell3.innerHTML = myLibrary[i].pages;
-
+    cell1.innerHTML = myLibrary[i].title;  // 0
+    cell2.innerHTML = myLibrary[i].author; // 1
+    cell3.innerHTML = myLibrary[i].pages; // index 2
     //add and wait for action for read/unread button
     let changeBut = document.createElement("button");
     changeBut.id = i;
     changeBut.className = "btn btn-success";
     cell4.appendChild(changeBut);
     let readStatus = "";
-    if (myLibrary[i].check == false) {
-      readStatus = "Yes";
+    if (myLibrary[i].check == true) {
+      readStatus = "Yes"; // change to no
     } else {
       readStatus = "No";
+      changeBut.className = "btn btn-fail";
     }
     changeBut.innerHTML = readStatus;
 
@@ -94,7 +95,7 @@ function render() {
     cell5.appendChild(delButton);
     delButton.className = "btn btn-warning";
     delButton.innerHTML = "Delete";
-    delButton.addEventListener("clicks", function () {
+    delButton.addEventListener("click", function () {  /// remove s from clicks
       alert(`You've deleted title: ${myLibrary[i].title}`);
       myLibrary.splice(i, 1);
       render();
