@@ -10,9 +10,9 @@ My website should be able to:
 
 ## Bugs to be fixed
 
-1. Website loads but nothing works in my javascript
-2. Website loads but nothing happens
-3. Error in console when you try to add a book
+1. Website loads but nothing works in my javascript //
+2. Website loads but nothing happens //
+3. Error in console when you try to add a book // can add new book
 4. It uses the title name as the author name
 5. Delete button is broken
 6. When I add a book that I say I've read - it saves the wrong answer
